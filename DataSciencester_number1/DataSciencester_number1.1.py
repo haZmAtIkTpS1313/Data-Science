@@ -31,9 +31,10 @@ friendship_pairs = [(0,1), (0,2), (1,2), (1,3), (2,3), (3,4),
 friendships = {user["id"] : [] for user in users}
 
 #и перебрать все дружеские пары, заполняя их 
-for i, j in friendships:
-    friendships[i].append(j) # Добавить j как друга для i
-    friendships[j].append(i) # Добавить i как друга для j
+for i in friendships:
+    for j in friendships:
+        friendships[i].append(j) # Добавить j как друга для i
+        friendships[j].append(i) # Добавить i как друга для j
 
 
 #Число друзей 
@@ -168,7 +169,8 @@ for salary, tenure in salaries_and_tenures:
 #Ключи - это стажные группыб значения - средняя зарплата по этой группе
 average_salary_by_bucket = {
     tenure_bucket : sum(salaries) / len(salaries)
-    for tenure_bucket, salaries in salary_by_tenure_bucket.iteritems()
+    for tenure_bucket in salary_by_tenure_bucket.iteritems()
+    for salaries in salary_by_tenure_bucket.iteritems()
 }
 
 #Предсказать оплату, исходя из стажа 
