@@ -41,3 +41,36 @@ def full_name(first = "некто", last = "как-то там"):
 full_name("Джоэл", "Грас")     # Джоэл Грас
 full_name("Джоэл")             # Джоэл как-то там
 full_name(last = "Грас")        #некто Грас
+
+
+#Строки 
+
+single_quoted_string = 'наука о данных'
+double_quoted_string = "наука о данных" 
+
+#Обратная косая черта используется для кодирования специальных символов
+tab_string = "\t"    #Обозначает символ табуляции
+print(tab_string)    # равно 1
+
+not_tab_string = r"\t"          #оьозначает символы '\t' and 't'
+print(not_tab_string)           #равно 2
+
+multi_string = """Это первая строка
+Это втроая
+А это третья"""
+
+#В Python усть такая штука как f-строка
+
+first_name = "Jack"
+last_name = "Gras"
+
+print(f"{first_name} {last_name}") # Jack Gras
+
+#Исключения 
+
+#Если происхожит какая-то ошибка, но вам нужно чтоб код не останавливался, придумали исключения
+try:
+    print(0/0)
+except ZeroDivisionErro:
+    print("Нельзя делить на ноль")
+    
