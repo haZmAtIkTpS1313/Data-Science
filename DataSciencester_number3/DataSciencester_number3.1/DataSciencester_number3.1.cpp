@@ -1,6 +1,9 @@
 #include <vector>
 #include <variant>
 #include <string>
+#include <span>
+#include<algorithm>
+
 
 // В C++ вектор строго типизирован. Чтобы хранить разные типы, 
 // нужно использовать std::variant (C++17) или std::any.
@@ -31,3 +34,20 @@ int last_alt = my_list[my_list.size() - 1];
     C++: Оператор [] у std::vector — это просто чистая арифметика указателей *(begin + index). 
     Если вы передадите -1, программа обратится к памяти перед началом массива, что приведет к неопределенному поведению (segfault). 
     В C++ нет встроенной магии отрицательных индексов, нужно использовать метод .back().*/
+
+
+
+std::vector<int> my_list2= {1, 2, 3, 4, 5};
+
+// В C++ нет синтаксиса срезов через двоеточие.
+// Нужно явно конструировать новый вектор из итераторов:
+std::vector<int> first_two(my_list.begin(), my_list.begin() + 2);
+
+// В C++20 можно использовать std::span для "взгляда" на память без копирования:
+
+//std::span<const int> first_two_view(my_list.data(), 2); 
+
+std::vector<int> my_list1 = {1, 2, 3, 4, 5};
+
+// В C++ нет оператора in. Нужно использовать алгоритм std::find:
+bool is_in = std::find(my_list1.begin(), my_list1.end(), 3) != my_list1.end();
